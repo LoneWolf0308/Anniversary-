@@ -1,193 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy 1st Anniversary ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When We Were Complete ❤️</title>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #ffe7b8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #fde7b8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: system-ui, sans-serif;
+}
 
-    .card {
-      background: #fffaf0;
-      width: 90%;
-      max-width: 420px;
-      padding: 24px;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      text-align: center;
-    }
+.card {
+  background: #fffaf0;
+  width: 92%;
+  max-width: 420px;
+  padding: 26px 22px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+}
 
-    h1 {
-      font-size: 40px;
-      margin-bottom: 16px;
-      color: #b03a5b;
-    }
+.hidden {
+  display: none;
+}
 
-    h2 {
-      font-size: 30px;
-      color: #c94a6a;
-      margin-bottom: 14px;
-    }
+h1 {
+  font-size: 30px;
+  color: #b63c5a;
+  margin-bottom: 14px;
+}
 
-    p {
-      font-size: 20px;
-      line-height: 1.6;
-      color: #444;
-      margin-bottom: 24px;
-    }
+p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+}
 
-    button {
-      background: #ff8c42;
-      color: white;
-      border: none;
-      padding: 12px 22px;
-      font-size: 18px;
-      border-radius: 25px;
-      cursor: pointer;
-      margin: 6px;
-    }
+/* Buttons */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
 
-    button:hover {
-      background: #ff7033;
-    }
+button {
+  flex: 1;
+  padding: 12px;
+  font-size: 17px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  background: #ff8c42;
+  color: white;
+}
 
-    .nav {
-      display: flex;
-      justify-content: space-between;
-    }
+/* Image slider */
+.slider {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  margin: 10px 0;
+}
 
-    .hidden {
-      display: none;
-    }
+.slider img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 14px;
+  scroll-snap-align: center;
+  flex-shrink: 0;
+}
 
-    /* Image slider */
-    .slider {
-      display: flex;
-      overflow-x: auto;
-      gap: 12px;
-      scroll-snap-type: x mandatory;
-    }
+/* Heart */
+.heart {
+  font-size: 72px;
+  animation: pulse 1.2s infinite;
+  margin: 18px 0 6px;
+  cursor: pointer;
+}
 
-    .slider img {
-      width: 100%;
-      max-width: 320px;
-      border-radius: 14px;
-      scroll-snap-align: center;
-    }
+.tap-text {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 12px;
+}
 
-    /* Heart animation */
-    .heart {
-      font-size: 64px;
-      color: red;
-      animation: pulse 1.2s infinite;
-      margin: 20px 0;
-    }
+/* Hidden final message */
+.final-message {
+  display: none;
+  margin-top: 12px;
+}
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.25); }
-      100% { transform: scale(1); }
-    }
-  </style>
+/* Animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- SECTION 1 -->
-  <div class="card" id="page1">
-    <h1>Open Me ❤️</h1>
-    <button onclick="nextPage(2)">Open</button>
-  </div>
+<!-- PAGE 1 -->
+<div class="card" id="page1">
+  <h1>Open Me ❤️</h1>
+  <button onclick="nextPage(2)">Open</button>
+</div>
 
-  <!-- SECTION 2 -->
-  <div class="card hidden" id="page2">
-    <h1>Happy 1st Anniversary</h1>
+<!-- PAGE 2 -->
+<div class="card hidden" id="page2">
+  <h1>Happy 1st Anniversary</h1>
+  <p>
+    One year ago, we began something that quietly became
+    the most important part of my life.
+  </p>
+  <div class="buttons">
+    <button onclick="prevPage(1)">← Back</button>
+    <button onclick="nextPage(3)">Next →</button>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="card hidden" id="page3">
+  <h1>Our First Meet ✨</h1>
+  <div class="slider">
+    <img src="first1.jpg">
+    <img src="first2.jpg">
+    <img src="first3.jpg">
+  </div>
+  <div class="buttons">
+    <button onclick="prevPage(2)">← Back</button>
+    <button onclick="nextPage(4)">Next →</button>
+  </div>
+</div>
+
+<!-- PAGE 4 (DATE – 5 IMAGES) -->
+<div class="card hidden" id="page4">
+  <h1>Our First Date 💕</h1>
+  <div class="slider">
+    <img src="date1.jpg">
+    <img src="date2.jpg">
+    <img src="date3.jpg">
+    <img src="date4.jpg">
+    <img src="date5.jpg">
+  </div>
+  <div class="buttons">
+    <button onclick="prevPage(3)">← Back</button>
+    <button onclick="nextPage(5)">Next →</button>
+  </div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="card hidden" id="page5">
+  <h1>Our Moments 🌸</h1>
+  <div class="slider">
+    <img src="moment1.jpg">
+    <img src="moment2.jpg">
+  </div>
+  <div class="buttons">
+    <button onclick="prevPage(4)">← Back</button>
+    <button onclick="nextPage(6)">Next →</button>
+  </div>
+</div>
+
+<!-- PAGE 6 (TAP HEART TO REVEAL) -->
+<div class="card hidden" id="page6">
+  <h1>Forever ❤️</h1>
+
+  <div class="heart" onclick="revealMessage()">❤️</div>
+  <div class="tap-text">Tap me</div>
+
+  <div class="final-message" id="finalMessage">
     <p>
-      One year ago, we began something that quietly became
-      the most important part of my life.
+      I don’t promise perfection.  
+      I promise presence, honesty,  
+      and choosing you —  
+      every single day.<br>
+      I Love You My Sunshine✨<br>
+      Mwah 💋
     </p>
-    <div class="nav">
-      <button onclick="prevPage(1)">← Back</button>
-      <button onclick="nextPage(3)">Next →</button>
-    </div>
   </div>
+</div>
 
-  <!-- SECTION 3 -->
-  <div class="card hidden" id="page3">
-    <h2>Our First Meet 🌸</h2>
-    <div class="slider">
-      <img src="./first1.jpg">
-      <img src="./first2.jpg">
-      <img src="./first3.jpg">
-    </div>
-    <div class="nav">
-      <button onclick="prevPage(2)">← Back</button>
-      <button onclick="nextPage(4)">Next →</button>
-    </div>
-  </div>
+<script>
+function nextPage(n) {
+  document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
+  document.getElementById('page' + n).classList.remove('hidden');
+}
 
-  <!-- SECTION 4 -->
-  <div class="card hidden" id="page4">
-    <h2>Our First Date 💕</h2>
-    <div class="slider">
-      <img src="./date1.jpg">
-      <img src="./date2.jpg">
-      <img src="./date3.jpg">
-      <img src="./date4.jpg">
-      <img src="./date5.jpg">
-    </div>
-    <div class="nav">
-      <button onclick="prevPage(3)">← Back</button>
-      <button onclick="nextPage(5)">Next →</button>
-    </div>
-  </div>
+function prevPage(n) {
+  document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
+  document.getElementById('page' + n).classList.remove('hidden');
+}
 
-  <!-- SECTION 5 -->
-  <div class="card hidden" id="page5">
-    <h2>When We Were Complete 💖</h2>
-    <div class="slider">
-      <img src="./moment1.jpg">
-      <img src="./moment2.jpg">
-    </div>
-    <div class="nav">
-      <button onclick="prevPage(4)">← Back</button>
-      <button onclick="nextPage(6)">Next →</button>
-    </div>
-  </div>
-
-  <!-- SECTION 6 -->
-  <div class="card hidden" id="page6">
-    <h2>Forever ❤️</h2>
-    <p>
-      This was just the beginning.  
-      Every tomorrow, every dream —  
-      I choose you.
-    </p>
-    <div class="heart">❤️</div>
-    <button onclick="prevPage(5)">← Back</button>
-  </div>
-
-  <script>
-    function nextPage(n) {
-      document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
-      document.getElementById('page' + n).classList.remove('hidden');
-    }
-
-    function prevPage(n) {
-      document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
-      document.getElementById('page' + n).classList.remove('hidden');
-    }
-  </script>
+function revealMessage() {
+  document.getElementById("finalMessage").style.display = "block";
+}
+</script>
 
 </body>
 </html>
