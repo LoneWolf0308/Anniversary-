@@ -143,7 +143,7 @@ button {
   </div>
 </div>
 
-<!-- PAGE 4 (DATE – 5 IMAGES) -->
+<!-- PAGE 4 -->
 <div class="card hidden" id="page4">
   <h1>Our First Date 💕</h1>
   <div class="slider">
@@ -172,12 +172,12 @@ button {
   </div>
 </div>
 
-<!-- PAGE 6 (TAP HEART TO REVEAL) -->
+<!-- PAGE 6 (FINAL) -->
 <div class="card hidden" id="page6">
   <h1>Forever ❤️</h1>
 
   <div class="heart" onclick="revealMessage()">❤️</div>
-  <div class="tap-text">Tap me</div>
+  <div class="tap-text" id="tapText">Tap me</div>
 
   <div class="final-message" id="finalMessage">
     <p>
@@ -189,8 +189,7 @@ button {
       Mwah 💋
     </p>
   </div>
-</div>
-
+  
 <script>
 function nextPage(n) {
   document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
@@ -204,6 +203,7 @@ function prevPage(n) {
 
 function revealMessage() {
   document.getElementById("finalMessage").style.display = "block";
+  document.getElementById("tapText").style.display = "none";
 }
 </script>
 
