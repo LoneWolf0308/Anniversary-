@@ -1,232 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>For You ❤️</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 1st Anniversary ❤️</title>
 
-<style>
+  <style>
     body {
-        margin: 0;
-        font-family: 'Segoe UI', sans-serif;
-        min-height: 100vh;
-        background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffd1ff, #ffc3a0);
-        background-size: 400% 400%;
-        animation: gradient 12s ease infinite;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        overflow-y: auto;
-        padding: 20px 0;
-        transition: background 1.5s ease;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #ffe7b8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
 
-    @keyframes gradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+    .card {
+      background: #fffaf0;
+      width: 90%;
+      max-width: 420px;
+      padding: 24px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      text-align: center;
     }
 
-    .page {
-        display: none;
-        background: rgba(255,255,255,0.92);
-        border-radius: 25px;
-        padding: 25px;
-        max-width: 720px;
-        width: 90%;
-        max-height: 90vh;
-        overflow-y: auto;
-        text-align: center;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-        animation: fadeIn 0.6s;
+    h1 {
+      font-size: 40px;
+      margin-bottom: 16px;
+      color: #b03a5b;
     }
 
-    .page.active {
-        display: block;
-    }
-
-    h1, h2 {
-        color: #b0005a;
+    h2 {
+      font-size: 30px;
+      color: #c94a6a;
+      margin-bottom: 14px;
     }
 
     p {
-        font-size: 18px;
-        line-height: 1.7;
-        color: #333;
+      font-size: 20px;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 24px;
+    }
+
+    button {
+      background: #ff8c42;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      font-size: 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 6px;
+    }
+
+    button:hover {
+      background: #ff7033;
     }
 
     .nav {
-        margin-top: 25px;
-        display: flex;
-        justify-content: space-between;
-        gap: 10px;
+      display: flex;
+      justify-content: space-between;
     }
 
-    .btn {
-        flex: 1;
-        padding: 14px;
-        font-size: 17px;
-        border-radius: 30px;
-        border: none;
-        background: #ff7a3d;
-        color: white;
-        cursor: pointer;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    .hidden {
+      display: none;
     }
 
-    /* 🔥 CENTER-ALIGNED SWIPE CONTAINER */
-    .swipe-container {
-        display: flex;
-        overflow-x: auto;
-        gap: 15px;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        padding: 10px 7.5%;
-        margin-top: 20px;
+    /* Image slider */
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 12px;
+      scroll-snap-type: x mandatory;
     }
 
-    .swipe-container::-webkit-scrollbar {
-        display: none;
+    .slider img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 14px;
+      scroll-snap-align: center;
     }
 
-    .swipe-container img {
-        flex: 0 0 85%;
-        max-width: 85%;
-        border-radius: 20px;
-        scroll-snap-align: center;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-
-    /* ❤️ HEART LOCK */
-    .heart-lock {
-        font-size: 70px;
-        cursor: pointer;
-        animation: pulse 1.5s infinite;
-        margin: 30px 0 10px;
+    /* Heart animation */
+    .heart {
+      font-size: 64px;
+      color: red;
+      animation: pulse 1.2s infinite;
+      margin: 20px 0;
     }
 
     @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.3); }
-        100% { transform: scale(1); }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+      100% { transform: scale(1); }
     }
-
-    #finalMessage {
-        display: none;
-        animation: fadeIn 1s;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(15px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-</style>
+  </style>
 </head>
 
 <body>
 
-<!-- PAGE 1 -->
-<div class="page active" id="page1">
+  <!-- SECTION 1 -->
+  <div class="card" id="page1">
     <h1>Open Me ❤️</h1>
-    <button class="btn" onclick="goToPage(2)">Tap Gently</button>
-</div>
+    <button onclick="nextPage(2)">Open</button>
+  </div>
 
-<!-- PAGE 2 -->
-<div class="page" id="page2">
-    <h2>Happy 1st Anniversary</h2>
+  <!-- SECTION 2 -->
+  <div class="card hidden" id="page2">
+    <h1>Happy 1st Anniversary</h1>
     <p>
-        One year ago, we began something that quietly became
-        the most important part of my life.
+      One year ago, we began something that quietly became
+      the most important part of my life.
     </p>
     <div class="nav">
-        <button class="btn" onclick="goToPage(1)">← Back</button>
-        <button class="btn" onclick="goToPage(3)">Next →</button>
+      <button onclick="prevPage(1)">← Back</button>
+      <button onclick="nextPage(3)">Next →</button>
     </div>
-</div>
+  </div>
 
-<!-- PAGE 3 -->
-<div class="page" id="page3">
-    <h2>Our First Meet 💫</h2>
-    <div class="swipe-container">
-        <img src="images/first1.jpg">
-        <img src="images/first2.jpg">
-        <img src="images/first3.jpg">
+  <!-- SECTION 3 -->
+  <div class="card hidden" id="page3">
+    <h2>Our First Meet 🌸</h2>
+    <div class="slider">
+      <img src="./first1.jpg">
+      <img src="./first2.jpg">
+      <img src="./first3.jpg">
     </div>
     <div class="nav">
-        <button class="btn" onclick="goToPage(2)">← Back</button>
-        <button class="btn" onclick="goToPage(4)">Next →</button>
+      <button onclick="prevPage(2)">← Back</button>
+      <button onclick="nextPage(4)">Next →</button>
     </div>
-</div>
+  </div>
 
-<!-- PAGE 4 -->
-<div class="page" id="page4">
-    <h2>Our First Date ❤️</h2>
-    <div class="swipe-container">
-        <img src="images/date1.jpg">
-        <img src="images/date2.jpg">
-        <img src="images/date3.jpg">
-        <img src="images/date4.jpg">
-        <img src="images/date5.jpg">
+  <!-- SECTION 4 -->
+  <div class="card hidden" id="page4">
+    <h2>Our First Date 💕</h2>
+    <div class="slider">
+      <img src="./date1.jpg">
+      <img src="./date2.jpg">
+      <img src="./date3.jpg">
+      <img src="./date4.jpg">
+      <img src="./date5.jpg">
     </div>
     <div class="nav">
-        <button class="btn" onclick="goToPage(3)">← Back</button>
-        <button class="btn" onclick="goToPage(5)">Next →</button>
+      <button onclick="prevPage(3)">← Back</button>
+      <button onclick="nextPage(5)">Next →</button>
     </div>
-</div>
+  </div>
 
-<!-- PAGE 5 -->
-<div class="page" id="page5">
+  <!-- SECTION 5 -->
+  <div class="card hidden" id="page5">
     <h2>When We Were Complete 💖</h2>
-    <div class="swipe-container">
-        <img src="images/moment1.jpg">
-        <img src="images/moment2.jpg">
+    <div class="slider">
+      <img src="./moment1.jpg">
+      <img src="./moment2.jpg">
     </div>
     <div class="nav">
-        <button class="btn" onclick="goToPage(4)">← Back</button>
-        <button class="btn" onclick="goToPage(6)">Next →</button>
+      <button onclick="prevPage(4)">← Back</button>
+      <button onclick="nextPage(6)">Next →</button>
     </div>
-</div>
+  </div>
 
-<!-- PAGE 6 -->
-<div class="page" id="page6">
-    <h2>One Last Thing…</h2>
+  <!-- SECTION 6 -->
+  <div class="card hidden" id="page6">
+    <h2>Forever ❤️</h2>
+    <p>
+      This was just the beginning.  
+      Every tomorrow, every dream —  
+      I choose you.
+    </p>
+    <div class="heart">❤️</div>
+    <button onclick="prevPage(5)">← Back</button>
+  </div>
 
-    <div id="heartLock" onclick="unlockMessage()">
-        <div class="heart-lock">❤️</div>
-        <p>Tap the heart</p>
-    </div>
-
-    <div id="finalMessage">
-        <p>
-            I don’t promise perfection —
-            I promise presence, honesty,
-            and choosing you every single day.
-        </p>
-        <p><strong>Forever yours,<br>Your Lord</strong></p>
-    </div>
-
-    <div class="nav">
-        <button class="btn" onclick="goToPage(5)">← Back</button>
-    </div>
-</div>
-
-<script>
-function goToPage(n) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page' + n).classList.add('active');
-
-    if (n > 1) {
-        document.body.style.background = "#FFE5B4";
-    } else {
-        document.body.style.background =
-            "linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffd1ff, #ffc3a0)";
+  <script>
+    function nextPage(n) {
+      document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
+      document.getElementById('page' + n).classList.remove('hidden');
     }
-}
 
-function unlockMessage() {
-    document.getElementById("heartLock").style.display = "none";
-    document.getElementById("finalMessage").style.display = "block";
-}
-</script>
+    function prevPage(n) {
+      document.querySelectorAll('.card').forEach(c => c.classList.add('hidden'));
+      document.getElementById('page' + n).classList.remove('hidden');
+    }
+  </script>
 
 </body>
 </html>
